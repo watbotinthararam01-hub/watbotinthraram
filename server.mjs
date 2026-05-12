@@ -348,7 +348,15 @@ api.put("/guidelines", requireAuth, async (req, res) => {
 // ─── Mount API ────────────────────────────────────────────────────────────────
 
 app.use("/api", api);
+const distPath = path.join(__dirname, "dist");
 
+if (existsSync(distPath)) {
+  app.use(express.static(distPath));
+
+  app.get("*", (_req, res) => {
+    res.sendFile(path.join(distPath, "index.html"));
+  });
+}
 // ─── Static Frontend ──────────────────────────────────────────────────────────
 
 const publicDir = path.join(__dirname, "public");
