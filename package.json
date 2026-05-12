@@ -1,0 +1,22 @@
+{
+  "name": "wat-bot-inthraram",
+  "version": "1.0.0",
+  "description": "Wat Bot Inthraram — Bilingual Buddhist Temple CMS (Thai/English)",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "main": "server.mjs",
+  "scripts": {
+    "start": "node server.mjs",
+    "migrate": "node migrate.mjs",
+    "build": "echo Already built. Run npm start to launch the server."
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "express-session": "^1.18.1",
+    "pg": "^8.13.3"
+  }
+}

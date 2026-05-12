@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: wat-bot-inthraram
+    runtime: node
+    region: singapore
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/healthz
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: DATABASE_URL
+        fromDatabase:
+          name: wat-bot-db
+          property: connectionString
+
+databases:
+  - name: wat-bot-db
+    region: singapore
+    plan: free
+    databaseName: watbot
+    user: watbot
